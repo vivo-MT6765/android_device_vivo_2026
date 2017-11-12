@@ -90,7 +90,8 @@ PRODUCT_PACKAGES += \
     fstab.mt6765 \
     fstab.mt6762 \
     init.mt6765.rc \
-    init.mt6762.rc
+    init.mt6762.rc \
+    init.safailnet.rc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765 \

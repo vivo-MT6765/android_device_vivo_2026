@@ -37,3 +37,9 @@ prebuilt_etc {
     name: "fstab.mt6762",
     src: "etc/fstab.mt6765",
 }
+
+// safailnet
+prebuilt_etc {
+    name: "init.safailnet.rc",
+    src: "etc/init.safailnet.rc",
+}
