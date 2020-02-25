@@ -53,6 +53,10 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0_system
 
+# Light
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-service.dandelion
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.mt6765 \
