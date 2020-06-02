@@ -44,6 +44,10 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default
 
+# DT2W
+PRODUCT_PACKAGES += \
+    DT2W-Service-Dandelion
+
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
