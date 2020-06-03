@@ -79,3 +79,6 @@ persist.debug.dalvik.vm.core_platform_api_policy=just-warn
 ro.kernel.android.checkjni=1
 dalvik.vm.lockprof.threshold=500
 dalvik.vm.image-dex2oat-filter=verify-at-runtime
+
+# Zygote preforking
+persist.device_config.runtime_native.usap_pool_enabled=true
