@@ -77,6 +77,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-service.2026
 
+# WIFI
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.mt6765 \
