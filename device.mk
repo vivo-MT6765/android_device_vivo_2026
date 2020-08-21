@@ -78,6 +78,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     RcsService
 
+# Wi-Fi
+PRODUCT_PACKAGES += \
+    TetheringConfigOverlay
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/idc/uinput-fpc.idc:$(TARGET_COPY_OUT_SYSTEM)/usr/idc/uinput-fpc.idc \
