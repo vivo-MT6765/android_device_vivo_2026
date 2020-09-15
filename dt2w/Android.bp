@@ -33,3 +33,10 @@ android_app {
         "privapp-permissions_org.lineageos.dt2w.dandelion"
     ]
 }
+
+prebuilt_etc {
+    name: "privapp-permissions_org.lineageos.dt2w.dandelion",
+    sub_dir: "permissions",
+    src: "privapp-permissions_org.lineageos.dt2w.dandelion.xml",
+    filename_from_src: true,
+}
