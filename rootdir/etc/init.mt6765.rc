@@ -45,3 +45,6 @@ on post-fs
     mount none /dev/null vendor/lib64/hw/lights.mt6765.so bind
     mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl-mediatek.so bind
     mount none /dev/null vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc bind
+
+on boot
+    setprop init.svc.console stopped
