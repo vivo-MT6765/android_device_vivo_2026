@@ -7,6 +7,9 @@ on init
     mount none /system/etc/fstab.mt6765 /vendor/etc/fstab.mt6765 bind
     mount none /system/etc/fstab.mt6762 /vendor/etc/fstab.mt6762 bind
 
+    # Disable vendor overlays
+    mount none /vendor/lost+found /vendor/overlay bind
+
     # Update Permissions of the DT2W node
     chown system system /dev/input/event3
 
