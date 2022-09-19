@@ -67,3 +67,6 @@ product								/product			ext4		ro											wait,avb,logical,first_stage_mount,
 # Trusted Execution Environment (TEE)
 /dev/block/platform/bootdevice/by-name/tee1			/tee1				emmc		defaults										defaults
 /dev/block/platform/bootdevice/by-name/tee2			/tee2				emmc		defaults										defaults
+
+# ZRAM - Compressed RAM based Block Device (SWAP)
+/dev/block/zram0						none				swap		defaults										zramsize=55%
