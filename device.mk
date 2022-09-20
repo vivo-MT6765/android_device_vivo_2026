@@ -54,6 +54,10 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0_system
 
 # Ramdisk
+PRODUCT_PACKAGES += \
+    fstab.mt6765 \
+    fstab.mt6762
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765 \
     $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6762
