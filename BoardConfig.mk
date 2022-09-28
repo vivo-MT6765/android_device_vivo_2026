@@ -145,3 +145,6 @@ BOARD_VNDK_VERSION := current
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
 BUILD_WITHOUT_VENDOR := true
+
+# Inherit the proprietary version
+include vendor/xiaomi/dandelion/BoardConfigVendor.mk

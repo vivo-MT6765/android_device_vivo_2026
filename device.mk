@@ -20,6 +20,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
+# Inherit the Proprietary Files
+$(call inherit-product, vendor/xiaomi/dandelion/dandelion-vendor.mk)
+
 # API
 PRODUCT_SHIPPING_API_LEVEL := 29
 PRODUCT_EXTRA_VNDK_VERSIONS := 29
