@@ -222,28 +222,6 @@
     <!-- The restoring is handled by modem if it is true-->
      <bool name="skip_restoring_network_selection">true</bool>
 
-    <!-- Height of the status bar -->
-    <dimen name="status_bar_height">21.0dp</dimen>
-    <dimen name="status_bar_height_portrait">21.0dp</dimen>
-
-    <!-- Height of the status bar in landscape -->
-    <dimen name="status_bar_height_landscape">20.5dp</dimen>
-
-    <!-- The status bar padding before and after icons -->
-    <dimen name="rounded_corner_content_padding">8dp</dimen>
-    <dimen name="rounded_corner_content_padding_alt">8dp</dimen>
-
-    <!-- Default radius of the software rounded corners. -->
-    <dimen name="rounded_corner_radius">10.0px</dimen>
-
-    <!-- Radius of the software rounded corners at the top of the display in its natural
-        orientation. If zero, the value of rounded_corner_radius is used. -->
-    <dimen name="rounded_corner_radius_top">10.0px</dimen>
-
-    <!-- Radius of the software rounded corners at the bottom of the display in its natural
-        orientation. If zero, the value of rounded_corner_radius is used. -->
-    <dimen name="rounded_corner_radius_bottom">10.0px</dimen>
-
     <!-- User activity timeout: Maximum screen dim duration as a percentage of screen off timeout.
     
          This resource is similar to config_maximumScreenDimDuration but the maximum
@@ -292,6 +270,12 @@
      <integer name="config_wifi_framework_wifi_score_bad_rssi_threshold_5GHz">-80</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_24GHz">-73</integer>
      <integer name="config_wifi_framework_wifi_score_low_rssi_threshold_5GHz">-70</integer>
+
+    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
+     <integer name="config_screenRecorderMaxFramerate">60</integer>
+    
+    <!-- Screen off delay --> 
+     <integer name="config_screen_off_delay">0</integer>
 
     <!-- ComponentName of a dream to show whenever the system would otherwise have
          gone to sleep.  When the PowerManager is asked to go to sleep, it will instead
@@ -418,34 +402,24 @@
          than the size of the config_autoBrightnessLevels array.
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
-    <array name="config_autoBrightnessLcdBacklightValues">
-        <item>3</item>
-        <item>3</item>
-        <item>3</item>
-        <item>3</item>
-        <item>8</item>
-        <item>13</item>
-        <item>20</item>
-        <item>25</item>
-        <item>33</item>
-        <item>41</item>
-        <item>45</item>
-        <item>45</item>
-        <item>45</item>
-        <item>47</item>
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>30</item>
+        <item>40</item>
         <item>50</item>
-        <item>58</item>
-        <item>63</item>
-        <item>67</item>
-        <item>72</item>
-        <item>90</item>
-        <item>99</item>
-        <item>150</item>
-        <item>175</item>
-        <item>208</item>
-        <item>248</item>
+        <item>60</item>
+        <item>70</item>
+        <item>80</item>
+        <item>102</item>
+        <item>102</item>
+        <item>102</item>
+        <item>102</item>
+        <item>102</item>
+        <item>180</item>
+        <item>200</item>
+        <item>210</item>
+        <item>230</item>
         <item>255</item>
-    </array>
+    </integer-array>
 
     <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
@@ -463,33 +437,23 @@
          Spline interpolation is used to determine the auto-brightness
          backlight values for lux levels between these control points.
          Must be overridden in platform specific overlays -->
-    <array name="config_autoBrightnessLevels">
-        <item>1</item>
-        <item>2</item>
-        <item>4</item>
-        <item>5</item>
-        <item>8</item>
-        <item>13</item>
-        <item>17</item>
-        <item>21</item>
-        <item>26</item>
-        <item>30</item>
-        <item>34</item>
-        <item>39</item>
-        <item>60</item>
+    <integer-array name="config_autoBrightnessLevels">
+        <item>16</item>
+        <item>32</item>
+        <item>50</item>
+        <item>100</item>
         <item>140</item>
-        <item>310</item>
-        <item>400</item>
-        <item>500</item>
+        <item>180</item>
+        <item>240</item>
+        <item>300</item>
         <item>600</item>
         <item>1000</item>
-        <item>1200</item>
-        <item>1500</item>
-        <item>2100</item>
+        <item>2000</item>
         <item>3000</item>
-        <item>3500</item>
         <item>4000</item>
-    </array>
+        <item>8000</item>
+        <item>10000</item>
+    </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
