@@ -20,8 +20,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Enable updating of APEXes
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
-# Inherit the Proprietary Files
-$(call inherit-product, vendor/xiaomi/dandelion/dandelion-vendor.mk)
+# Inherit the proprietary files
+#$(call inherit-product, vendor/vivo/2026/2026-vendor.mk)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 29
@@ -55,10 +55,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Snap
 
-# DT2W
-PRODUCT_PACKAGES += \
-    DT2W-Service-Dandelion
-
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
@@ -72,34 +68,17 @@ PRODUCT_PACKAGES += \
     libhwbinder \
     libhwbinder.vendor    
 
-# IMS
-PRODUCT_BOOT_JARS += \
-    mediatek-common \
-    mediatek-framework \
-    mediatek-ims-base \
-    mediatek-ims-common \
-    mediatek-telecom-common \
-    mediatek-telephony-base \
-    mediatek-telephony-common
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/permissions/privapp-permissions-mediatek.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-mediatek.xml
-
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.dandelion
+    android.hardware.light@2.0-service.2026
 
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.mt6765 \
-    fstab.mt6762 \
-    init.mt6765.rc \
-    init.mt6762.rc \
-    init.safailnet.rc
+    init.mt6765.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765 \
-    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6762
+    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
 
 # RcsService
 PRODUCT_PACKAGES += \

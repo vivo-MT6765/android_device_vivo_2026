@@ -18,8 +18,8 @@
 
 set -e
 
-DEVICE=dandelion
-VENDOR=xiaomi
+DEVICE=2026
+VENDOR=vivo
 
 INITIAL_COPYRIGHT_YEAR=2022
 

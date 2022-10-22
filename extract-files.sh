@@ -18,8 +18,8 @@
 
 set -e
 
-DEVICE=dandelion
-VENDOR=xiaomi
+DEVICE=2026
+VENDOR=vivo
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
