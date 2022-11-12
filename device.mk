@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+DEVICE_PATH := device/vivo/2026
+
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
@@ -41,15 +43,18 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
-	$(LOCAL_PATH)/overlay
+	$(DEVICE_PATH)/overlay
 
 # APN
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
+    $(DEVICE_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_PRODUCT)/vendor_overlay/$(PLATFORM_VNDK_VERSION)/etc/audio_policy_configuration.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -78,7 +83,7 @@ PRODUCT_PACKAGES += \
     init.mt6765.rc
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
+    $(DEVICE_PATH)/rootdir/etc/fstab.mt6765:$(TARGET_COPY_OUT_RAMDISK)/fstab.mt6765
 
 # RcsService
 PRODUCT_PACKAGES += \
