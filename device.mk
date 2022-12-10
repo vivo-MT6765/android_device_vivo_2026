@@ -19,15 +19,11 @@ DEVICE_PATH := device/vivo/2026
 # Installs gsi keys into ramdisk, to boot a GSI with verified boot.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 
-# Enable updating of APEXes
-$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
-
 # Inherit the proprietary files
-#$(call inherit-product, vendor/vivo/2026/2026-vendor.mk)
+$(call inherit-product, vendor/vivo/2026/2026-vendor.mk)
 
 # API
 PRODUCT_SHIPPING_API_LEVEL := 29
-PRODUCT_EXTRA_VNDK_VERSIONS := 29
 
 # Dynamic Partition
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
@@ -44,10 +40,6 @@ PRODUCT_SOONG_NAMESPACES += \
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
 	$(DEVICE_PATH)/overlay
-
-# APN
-PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/configs/apns-conf.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/apns-conf.xml
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -69,9 +61,12 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0_system \
     libhidltransport \
-    libhidltransport.vendor \
     libhwbinder \
-    libhwbinder.vendor    
+
+# KPOC
+PRODUCT_PACKAGES += \
+    libsuspend \
+    android.hardware.health@2.0
 
 # Light
 PRODUCT_PACKAGES += \
@@ -92,3 +87,7 @@ PRODUCT_COPY_FILES += \
 # RcsService
 PRODUCT_PACKAGES += \
     RcsService
+
+# Symbols
+PRODUCT_PACKAGES += \
+    libshim_showlogo

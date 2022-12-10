@@ -1,0 +1,13 @@
+# Unpinned blobs from full_k65v1_64_bsp-user 11 RP1A.200720.012 eng.compil.20211012.154701 release-keys
+
+# APNs
+etc/apns-conf.xml:product/etc/apns-conf.xml
+
+# Bluetooth-AptX
+lib64/libaptXHD_encoder.so
+lib64/libaptX_encoder.so
+
+# Charger
+bin/kpoc_charger
+etc/init/kpoc_charger.rc
+lib/libshowlogo.so

@@ -33,9 +33,9 @@ PRODUCT_MODEL := V2026
 PRODUCT_MANUFACTURER := vivo
 
 # Build info
-BUILD_FINGERPRINT := google/sunfish/sunfish:11/RQ3A.211001.001/7641976:user/release-keys
+BUILD_FINGERPRINT := google/raven/raven:12/SP2A.220405.004/8233519:user/release-keys
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    PRIVATE_BUILD_DESC="full_k65v1_64_bsp-user 11 RP1A.200720.012 eng.compil.20211012.154701 release-keys"
+    PRIVATE_BUILD_DESC="raven-user 12 SP2A.220405.004 8233519 release-keys"
 
 PRODUCT_GMS_CLIENTID_BASE := android-vivo
