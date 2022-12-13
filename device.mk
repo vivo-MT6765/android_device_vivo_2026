@@ -83,7 +83,3 @@ PRODUCT_COPY_FILES += \
 # RcsService
 PRODUCT_PACKAGES += \
     RcsService
-
-# Symbols
-PRODUCT_PACKAGES += \
-    libshim_showlogo
