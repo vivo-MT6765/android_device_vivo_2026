@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+          http://www.apache.org/licenses/LICENSE-2.0
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds.  Do not translate. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
+     <bool name="config_automatic_brightness_available">true</bool>
+    
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Control whether the always on display mode is enabled by default. This value will be used
+         during initialization when the setting is still null. -->
+    <bool name="config_dozeAlwaysOnEnabled">false</bool>
+
+    <!-- Power Management: Specifies whether to decouple the interactive state of the
+         device from the display on/off state.
+         When false, setInteractive(..., true) will be called before the display is turned on
+         and setInteractive(..., false) will be called after the display is turned off.
+         This mode provides best compatibility for devices that expect the interactive
+         state to be tied to the display state.
+         When true, setInteractive(...) will be called independently of whether the display
+         is being turned on or off.  This mode enables the power manager to reduce
+         clocks and disable the touch controller while the display is on.
+         This resource should be set to "true" when a doze component has been specified
+         to maximize power savings but not all devices support it.
+         Refer to power.h for details.
+    -->
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
+    <!-- IWLAN data service package name to bind to by default. If none is specified in an overlay, an
+         empty string is passed in -->
+    <string name="config_wlan_data_service_package">com.android.phone</string>
+
+    <!-- The default peak refresh rate for a given device. Change this value if you want to prevent
+         the framework from using higher refresh rates, even if display modes with higher refresh
+         rates are available from hardware composer. Only has an effect if the value is
+         non-zero. -->
+    <integer name="config_defaultPeakRefreshRate">0</integer>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+        percent. The length of this array is assumed to be one greater than
+        config_ambientThresholdLevels. The brightening threshold is calculated as
+        lux * (1.0f + CONSTRAINT_VALUE). When the current lux is higher than this threshold,
+        the screen brightness is recalculated. See the config_ambientThresholdLevels
+        description for how the constraint value is chosen. -->
+    <integer-array name="config_ambientBrighteningThresholds">
+        <item>2</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>400</item>
+        <item>600</item>
+        <item>1000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+        percent. The length of this array is assumed to be one greater than
+        config_ambientThresholdLevels. The darkening threshold is calculated as
+        lux * (1.0f - CONSTRAINT_VALUE). When the current lux is lower than this threshold,
+        the screen brightness is recalculated. See the config_ambientThresholdLevels
+        description for how the constraint value is chosen. -->
+    <integer-array name="config_ambientDarkeningThresholds">
+        <item>800</item>
+        <item>800</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+        <item>500</item>
+    </integer-array>
+
+    <!-- Array of ambient lux threshold values. This is used for determining hysteresis constraint
+        values by calculating the index to use for lookup and then setting the constraint value
+        to the corresponding value of the array. The new brightening hysteresis constraint value
+        is the n-th element of config_ambientBrighteningThresholds, and the new darkening
+        hysteresis constraint value is the n-th element of config_ambientDarkeningThresholds.
+        The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
+        condition                       calculated index
+        value < level[0]                0
+        level[n] <= value < level[n+1]  n+1
+        level[MAX] <= value             MAX+1 -->
+    <integer-array name="config_ambientThresholdLevels">
+        <item>2</item>
+        <item>10</item>
+        <item>30</item>
+        <item>100</item>
+        <item>800</item>
+        <item>2000</item>
+        <item>4000</item>
+    </integer-array>
+
+    <!-- Array of output values for LCD backlight corresponding to the lux values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLcdBacklightValues">
+        <item>18</item>
+        <item>25</item>
+        <item>31</item>
+        <item>77</item>
+        <item>107</item>
+        <item>138</item>
+        <item>184</item>
+        <item>266</item>
+        <item>363</item>
+        <item>445</item>
+        <item>496</item>
+        <item>502</item>
+        <item>502</item>
+        <item>502</item>
+        <item>507</item>
+        <item>507</item>
+        <item>512</item>
+        <item>512</item>
+        <item>512</item>
+        <item>517</item>
+        <item>517</item>
+        <item>522</item>
+        <item>527</item>
+        <item>527</item>
+        <item>527</item>
+        <item>542</item>
+        <item>553</item>
+        <item>563</item>
+        <item>573</item>
+        <item>583</item>
+        <item>594</item>
+        <item>604</item>
+        <item>609</item>
+        <item>624</item>
+        <item>629</item>
+        <item>640</item>
+        <item>655</item>
+        <item>665</item>
+        <item>670</item>
+        <item>686</item>
+        <item>696</item>
+        <item>701</item>
+        <item>716</item>
+        <item>727</item>
+        <item>737</item>
+        <item>865</item>
+        <item>1003</item>
+        <item>1136</item>
+        <item>1269</item>
+        <item>1382</item>
+        <item>1535</item>
+        <item>1638</item>
+        <item>1714</item>
+        <item>2047</item>
+        <item>2047</item>
+        <item>2047</item>
+        <item>2047</item>
+        <item>2047</item>
+    </integer-array>
+
+    <!-- Array of desired screen brightness in nits corresponding to the lux values
+        in the config_autoBrightnessLevels array. As with config_screenBrightnessMinimumNits and
+        config_screenBrightnessMaximumNits, the display brightness is defined as the measured
+        brightness of an all-white image.
+        If this is defined then:
+         - config_autoBrightnessLcdBacklightValues should not be defined
+         - config_screenBrightnessNits must be defined
+         - config_screenBrightnessBacklight must be defined
+        This array should have size one greater than the size of the config_autoBrightnessLevels
+        array. The brightness values must be non-negative and non-decreasing. This must be
+        overridden in platform specific overlays -->
+    <array name="config_autoBrightnessDisplayValuesNits">
+        <item>3.5</item>
+        <item>4.8</item>
+        <item>6.0</item>
+        <item>15.0</item>
+        <item>21.0</item>
+        <item>27.0</item>
+        <item>36.0</item>
+        <item>52.0</item>
+        <item>71.0</item>
+        <item>87.0</item>
+        <item>97.0</item>
+        <item>98.0</item>
+        <item>98.0</item>
+        <item>98.0</item>
+        <item>99.0</item>
+        <item>99.0</item>
+        <item>100.0</item>
+        <item>100.0</item>
+        <item>100.0</item>
+        <item>101.0</item>
+        <item>101.0</item>
+        <item>102.0</item>
+        <item>103.0</item>
+        <item>103.0</item>
+        <item>103.0</item>
+        <item>106.0</item>
+        <item>108.0</item>
+        <item>110.0</item>
+        <item>112.0</item>
+        <item>114.0</item>
+        <item>116.0</item>
+        <item>118.0</item>
+        <item>119.0</item>
+        <item>122.0</item>
+        <item>123.0</item>
+        <item>125.0</item>
+        <item>128.0</item>
+        <item>130.0</item>
+        <item>131.0</item>
+        <item>134.0</item>
+        <item>136.0</item>
+        <item>137.0</item>
+        <item>140.0</item>
+        <item>142.0</item>
+        <item>144.0</item>
+        <item>169.0</item>
+        <item>196.0</item>
+        <item>222.0</item>
+        <item>248.0</item>
+        <item>270.0</item>
+        <item>300.0</item>
+        <item>320.0</item>
+        <item>335.0</item>
+        <item>400.0</item>
+        <item>400.0</item>
+        <item>400.0</item>
+        <item>400.0</item>
+        <item>400.0</item>
+    </array>
+
+    <!-- Array of light sensor lux values to define our levels for auto backlight brightness support.
+        The N entries of this array define N + 1 control points as follows:
+        (1-based arrays)
+        Point 1:            (0, value[1]):             lux <= 0
+        Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+        Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+        ...
+        Point N+1: (level[N], value[N+1]):  level[N] < lux
+        The control points must be strictly increasing.  Each control point
+        corresponds to an entry in the brightness backlight values arrays.
+        For example, if lux == level[1] (first element of the levels array)
+        then the brightness will be determined by value[2] (second element
+        of the brightness values array).
+        Spline interpolation is used to determine the auto-brightness
+        backlight values for lux levels between these control points.
+        Must be overridden in platform specific overlays -->
+    <integer-array name="config_autoBrightnessLevels">
+        <item>16</item>
+        <item>32</item>
+        <item>50</item>
+        <item>100</item>
+        <item>140</item>
+        <item>180</item>
+        <item>240</item>
+        <item>300</item>
+        <item>600</item>
+        <item>1000</item>
+        <item>2000</item>
+        <item>3000</item>
+        <item>4000</item>
+        <item>8000</item>
+        <item>10000</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+        percent. The length of this array is assumed to be one greater than
+        config_screenThresholdLevels. The darkening threshold is calculated as
+        screenBrightness * (1.0f - CONSTRAINT_VALUE). When the new screen brightness is lower than
+        this threshold, it is applied. See the config_screenThresholdLevels description for how
+        the constraint value is chosen. -->
+    <integer-array name="config_screenBrightnessBacklight">
+        <item>1</item>
+        <item>255</item>
+    </integer-array>
+
+    <!-- An array of floats describing the screen brightness in nits corresponding to the backlight
+        values in the config_screenBrightnessBacklight array.  On OLED displays these  values
+        should be measured with an all white image while the display is in the fully on state.
+        Note that this value should *not* reflect the maximum brightness value for any high
+        brightness modes but only the maximum brightness value obtainable in a sustainable manner.
+        This array should be equal in size to config_screenBrightnessBacklight -->
+    <array name="config_screenBrightnessNits">
+        <item>2</item>
+        <item>455</item>
+    </array>
+
+    <!-- Array of hysteresis constraint values for brightening, represented as tenths of a
+        percent. The length of this array is assumed to be one greater than
+        config_screenThresholdLevels. The brightening threshold is calculated as
+        screenBrightness * (1.0f + CONSTRAINT_VALUE). When the new screen brightness is higher
+        than this threshold, it is applied. See the config_screenThresholdLevels description for
+        how the constraint value is chosen. -->
+    <integer-array name="config_screenBrighteningThresholds">
+        <item>0</item>
+    </integer-array>
+
+    <!-- Array of hysteresis constraint values for darkening, represented as tenths of a
+        percent. The length of this array is assumed to be one greater than
+        config_screenThresholdLevels. The darkening threshold is calculated as
+        screenBrightness * (1.0f - CONSTRAINT_VALUE). When the new screen brightness is lower than
+        this threshold, it is applied. See the config_screenThresholdLevels description for how
+        the constraint value is chosen. -->
+    <integer-array name="config_screenDarkeningThresholds">
+        <item>0</item>
+    </integer-array>
+
+    <!-- The maximum range of gamma adjustment possible using the screen
+        auto-brightness adjustment setting. -->
+    <fraction name="config_autoBrightnessAdjustmentMaxGamma">100.0%</fraction>
+
+    <!-- Stability requirements in milliseconds for accepting a new brightness level.  This is used
+        for debouncing the light sensor.  Different constants are used to debounce the light sensor
+        when adapting to brighter or darker environments.  This parameter controls how quickly
+        brightness changes occur in response to an observed change in light level that exceeds the
+        hysteresis threshold. -->
+    <integer name="config_autoBrightnessBrighteningLightDebounce">1000</integer>
+    <integer name="config_autoBrightnessDarkeningLightDebounce">1000</integer>
+
+    <!-- Default screen brightness setting.
+         Must be in the range specified by minimum and maximum. -->
+    <integer name="config_screenBrightnessSettingDefault">102</integer>
+
+    <!-- Maximum screen brightness allowed by the power manager.
+        The user is forbidden from setting the brightness above this level. -->
+    <integer name="config_screenBrightnessSettingMaximum">225</integer>
+
+    <!-- Minimum screen brightness setting allowed by the power manager.
+        The user is forbidden from setting the brightness below this level. -->
+    <integer name="config_screenBrightnessSettingMinimum">8</integer>
+
+    <!-- Minimum screen brightness allowed by the power manager. -->
+    <integer name="config_screenBrightnessDim">13</integer>
+
+    <!-- The bounding path of the cutout region of the main built-in display.
+         Must either be empty if there is no cutout region, or a string that is parsable by
+         {@link android.util.PathParser}.
+         The path is assumed to be specified in display coordinates with pixel units and in
+         the display's native orientation, with the origin of the coordinate system at the
+         center top of the display. Optionally, you can append either `@left` or `@right` to the
+         end of the path string, in order to change the path origin to either the top left,
+         or top right of the display.
+         To facilitate writing device-independent emulation overlays, the marker `@dp` can be
+         appended after the path string to interpret coordinates in dp instead of px units.
+         Note that a physical cutout should be configured in pixels for the best results.
+         Example for a 10px x 10px square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z</string>
+         Example for a 10dp x 10dp square top-center cutout:
+                <string ...>M -5,0 L -5,10 L 5,10 L 5,0 Z @dp</string>
+         @see https://www.w3.org/TR/SVG/paths.html#PathData
+         -->
+    <string translatable="false" name="config_mainBuiltInDisplayCutout">M 0,0 H -40 V 49 H 40 V 0 H 0 Z</string>
+
+    <!-- Whether the display cutout region of the main built-in display should be forced to
+        black in software (to avoid aliasing or emulate a cutout that is not physically existent).
+    -->
+    <bool name="config_fillMainBuiltInDisplayCutout">false</bool>
+</resources>
