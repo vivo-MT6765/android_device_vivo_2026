@@ -37,10 +37,6 @@ TARGET_SCREEN_WIDTH := 720
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-	$(DEVICE_PATH)/overlay
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default
