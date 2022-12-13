@@ -14,47 +14,29 @@
  * limitations under the License.
  */
 
-#ifndef ANDROID_HARDWARE_LIGHT_V2_0_LIGHT_H
-#define ANDROID_HARDWARE_LIGHT_V2_0_LIGHT_H
+#pragma once
 
-#include <android/hardware/light/2.0/ILight.h>
+#include <aidl/android/hardware/light/BnLights.h>
+#include <android-base/logging.h>
+#include <hardware/hardware.h>
 #include <hardware/lights.h>
-#include <hidl/Status.h>
-#include <unordered_map>
-#include <mutex>
+#include <vector>
 
-namespace android {
-namespace hardware {
-namespace light {
-namespace V2_0 {
-namespace implementation {
+using ::aidl::android::hardware::light::HwLightState;
+using ::aidl::android::hardware::light::HwLight;
+using ::aidl::android::hardware::light::LightType;
+using ::aidl::android::hardware::light::BnLights;
 
-using ::android::hardware::Return;
-using ::android::hardware::Void;
-using ::android::hardware::hidl_vec;
-using ::android::hardware::light::V2_0::ILight;
-using ::android::hardware::light::V2_0::LightState;
-using ::android::hardware::light::V2_0::Status;
-using ::android::hardware::light::V2_0::Type;
+namespace aidl {
+    namespace android {
+        namespace hardware {
+            namespace light {
 
-class Light : public ILight {
-  public:
-    Light();
-
-    Return<Status> setLight(Type type, const LightState& state) override;
-    Return<void> getSupportedTypes(getSupportedTypes_cb _hidl_cb) override;
-
-  private:
-    void handleBacklight(const LightState& state);
-
-    std::mutex mLock;
-    std::unordered_map<Type, std::function<void(const LightState&)>> mLights;
-};
-
-}  // namespace implementation
-}  // namespace V2_0
-}  // namespace light
-}  // namespace hardware
-}  // namespace android
-
-#endif  // ANDROID_HARDWARE_LIGHT_V2_0_LIGHT_H
+                class Lights : public BnLights {
+                    ndk::ScopedAStatus setLightState(int id, const HwLightState& state) override;
+                    ndk::ScopedAStatus getLights(std::vector<HwLight>* types) override;
+                };
+            }  // namespace light
+        }  // namespace hardware
+    }  // namespace android
+}  // namespace aidl
