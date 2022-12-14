@@ -51,6 +51,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/audio_policy_configuration.xml
+
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
