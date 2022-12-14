@@ -51,10 +51,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default
 
-# Camera
-PRODUCT_PACKAGES += \
-    Snap
-
 # Fastbootd
 PRODUCT_PACKAGES += \
     fastbootd
@@ -64,9 +60,7 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0_system \
     android.hidl.manager@1.0_system \
     libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor    
+    libhwbinder
 
 # Light
 PRODUCT_PACKAGES += \

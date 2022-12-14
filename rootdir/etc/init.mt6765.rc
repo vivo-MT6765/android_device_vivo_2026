@@ -13,14 +13,27 @@ on init
 
 service charger /system/bin/charger
     class charger
-    critical
-    group system graphics
-    seclabel u:r:healthd:s0
+    user system
+    group system graphics input
+    capabilities SYS_BOOT
+    seclabel u:r:charger:s0
 
 on charger
     # Turn backlight on and switch to backlight trigger
     write /sys/class/leds/lcd-backlight/brightness "1000"
     write /sys/class/leds/lcd-backlight/trigger "backlight"
+
+    write /proc/hps/enabled 0
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu7/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu4/online 0
+
+    write /sys/power/pm_async 0
 
 on post-fs
     # Unmount the overridden fstab because the SELinux label is incorrect
@@ -31,11 +44,9 @@ on post-fs
 
     # Disable OEM Lights 
     mount none /dev/null vendor/lib/hw/lights.mt6765.so bind
-    mount none /dev/null vendor/lib/hw/android.hardware.light@2.0-impl-mediatek.so bind
-    mount none /dev/null vendor/bin/hw/android.hardware.light@2.0-service-mediatek bind
+    mount none /dev/null vendor/bin/hw/android.hardware.lights-service.mediatek bind
     mount none /dev/null vendor/lib64/hw/lights.mt6765.so bind
-    mount none /dev/null vendor/lib64/hw/android.hardware.light@2.0-impl-mediatek.so bind
-    mount none /dev/null vendor/etc/init/android.hardware.light@2.0-service-mediatek.rc bind
+    mount none /dev/null vendor/etc/init/lights-mtk-default.rc bind
 
 on boot
     setprop init.svc.console stopped
