@@ -39,9 +39,16 @@ TARGET_SCREEN_WIDTH := 720
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS += \
-	$(LOCAL_PATH)/overlay
+# Runtime Resource Overlays 
+PRODUCT_PACKAGES += \
+    DialerOverlayV2026 \
+    FrameworksResOverlayV2026 \
+    SettingsOverlayV2026 \
+    SettingsProviderOverlayV2026 \
+    SystemUIOverlayV2026 \
+    TelephonyOverlayV2026 \
+    TetheringOverlayV2026 \
+    WifiResOverlayV2026
 
 # APN
 PRODUCT_COPY_FILES += \
@@ -80,10 +87,6 @@ PRODUCT_COPY_FILES += \
 # RcsService
 PRODUCT_PACKAGES += \
     RcsService
-
-# Wi-Fi
-PRODUCT_PACKAGES += \
-    TetheringConfigOverlay
 
 # Input
 PRODUCT_COPY_FILES += \

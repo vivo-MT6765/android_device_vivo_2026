@@ -1,0 +1,7 @@
+runtime_resource_overlay {
+    name: "DialerOverlayV2026",
+    theme: "DialerOverlayV2026",
+    certificate: "platform",
+    sdk_version: "current",
+    product_specific: true
+}

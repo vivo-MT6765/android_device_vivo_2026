@@ -1,0 +1,7 @@
+runtime_resource_overlay {
+    name: "SettingsProviderOverlayV2026",
+    theme: "SettingsProviderOverlayV2026",
+    certificate: "platform",
+    sdk_version: "current",
+    product_specific: true
+}
