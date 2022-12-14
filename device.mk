@@ -64,7 +64,7 @@ PRODUCT_PACKAGES += \
 
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.2026
+    android.hardware.light@2.0-service.V2026
 
 # Ramdisk
 PRODUCT_PACKAGES += \
